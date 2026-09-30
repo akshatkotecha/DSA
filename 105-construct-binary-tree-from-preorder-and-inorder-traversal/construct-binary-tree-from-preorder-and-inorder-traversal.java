@@ -14,25 +14,22 @@
  * }
  */
 class Solution {
+    private int i=0;
+    private HashMap<Integer,Integer> map=new HashMap<>();
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        Deque<Integer> q=new ArrayDeque<>();
-        for(int num : preorder) q.add(num);
-        return build(q,inorder);
-    }
-    private TreeNode build(Deque<Integer> q,int[] inorder){
-        if(inorder.length>0){
-            int idx=indexOf(inorder,q.poll());
-            TreeNode root=new TreeNode(inorder[idx]);
-            root.left=build(q,Arrays.copyOfRange(inorder,0,idx));
-            root.right=build(q,Arrays.copyOfRange(inorder,idx+1,inorder.length));
-            return root;
+        for(int i=0;i<inorder.length;i++){
+            map.put(inorder[i],i);
         }
-        return null;
+        return build(preorder,0,inorder.length-1);
     }
-    private int indexOf(int [] nums,int val){
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]==val) return i;
-        }
-        return -1;
+    public TreeNode build(int []preorder,int start,int end){
+        if(start>end) return null;
+        int val=preorder[i++];
+        TreeNode root=new TreeNode(val);
+        int idx=map.get(val);
+        root.left=build(preorder,start,idx-1);
+        root.right=build(preorder,idx+1,end);
+        return root;
+
     }
 }
