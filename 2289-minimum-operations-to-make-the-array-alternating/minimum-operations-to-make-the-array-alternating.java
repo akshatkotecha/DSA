@@ -36,8 +36,7 @@ class Solution {
                 c2++;
                 ans2=num;
             } 
-        }
-        
+        }        
         even.remove(ans2);
         odd.remove(ans1);
         int freq1=0;
