@@ -5,10 +5,8 @@ class Solution {
         for(int i=0;i<n;i++){
             for(String word : wordDict){
                 if(i<word.length()-1) continue;
-                if(i== word.length()-1 || dp[i-word.length()]){
-                    if(s.substring(i-word.length()+1,i+1).equals(word)) {
-                        dp[i]=true;
-                    }
+                if(i==word.length()-1 || dp[i-word.length()]){
+                    if(s.substring(i-word.length()+1,i+1).equals(word)) dp[i]=true; 
                 }
             }
         }
