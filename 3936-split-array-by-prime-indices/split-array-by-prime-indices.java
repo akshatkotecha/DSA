@@ -14,7 +14,7 @@ class Solution {
         return p;
     }
     public long splitArray(int[] nums) {
-        boolean []prime=sievePrime(1000000);
+        boolean []prime=sievePrime(nums.length);
         long sum1=0;
         long sum2=0;
         for(int i=0;i<nums.length;i++){
